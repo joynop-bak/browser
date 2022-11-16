@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="h-100">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>浏览器检测工具箱</title>
+
+  <meta name="description" content="通过Useragent和浏览器环境变量等方式判断浏览器、系统及设备类型，是页面判断检测的常用工具。" />
+  <meta name="keywords" content="Useragent,用户代理,浏览器判断,浏览器类型,浏览器信息" />
+  <meta name="author" content="HanRui@JoyNop.com" />
+  <!-- Bootstrap core CSS -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="sticky-footer-navbar.css" rel="stylesheet" />
+  <script src="Browser.js"></script>
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
+  <style>
+    a {
+      text-decoration: none;
+      color: #757575;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .container {
+      margin-bottom: 20px;
+    }
+
+    .module .code {
+      padding: 10px;
+      margin-bottom: 5px;
+      background: #f8f8f8;
+      line-height: 24px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    .module .code p {
+      margin: 0;
+      line-height: 20px;
+    }
+
+    .module table {
+      width: 100%;
+      margin-bottom: 20px;
+      table-layout: fixed;
+      border-collapse: collapse;
+      border-spacing: 0;
+      text-align: center;
+    }
+
+    .module thead {
+      background: #eee;
+    }
+
+    .module th,
+    .module td {
+      padding: 8px 5px;
+      line-height: 24px;
+      border: 1px solid #eee;
+    }
+
+    .mod-foot {
+      line-height: 40px;
+      text-align: right;
+    }
+
+    .mod-foot .btn {
+      position: relative;
+      display: inline-block;
+      min-width: 56px;
+      height: 34px;
+      background: #fff;
+      padding: 0 12px;
+      border: 1px solid #ececec;
+      border-radius: 6px;
+      line-height: 34px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      overflow: hidden;
+      transition: color .2s, opacity .2s;
+      font-family: Tahoma, Arial, Helvetica, "Microsoft YaHei";
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .mod-foot .btn:after {
+      content: " ";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: opacity .2s;
+      border-radius: 6px;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .mod-foot .btn span,
+    .mod-foot .btn svg {
+      vertical-align: middle;
+    }
+
+    .mod-foot .btn svg,
+    .mod-foot .btn svg+span {
+      position: relative;
+      top: -1px;
+    }
+
+    .mod-foot .btn:hover {
+      color: #000;
+      opacity: 1;
+    }
+
+    .mod-foot .btn:hover:after {
+      opacity: .02;
+    }
+  </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index.html">浏览器检测工具箱</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link " aria-current="page" href="/index.html">首页</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/get-new-browser.html">获取最新版浏览器</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled">###</a>
+            </li>
+          </ul>
+          <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+            <button class="btn btn-outline-success" type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container">
+      <div class="wrapper">
+        <div class="container">
+          <h1 class="mt-5">获取适合您的浏览器</h1>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">名称</th>
+                <th scope="col">下载地址</th>
+                <th scope="col">备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Google Chrome</td>
+                <td>
+                  <a class="btn btn-link" href="https://www.google.cn/intl/zh-CN/chrome/" target="_blank"
+                    role="button">访问官网</a>
+                </td>
+                <td>#</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Mozilla Firefox</td>
+                <td>
+                  <a class="btn btn-link" href="https://www.mozilla.org/zh-CN/firefox/new/" target="_blank"
+                    role="button">访问官网</a>
+                </td>
+                <td>#</td>
+
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Microsoft Edge</td>
+                <td>
+                  <a class="btn btn-link" href="https://www.microsoft.com/zh-cn/edge" target="_blank"
+                    role="button">访问官网</a>
+                </td>
+                <td>基于 Chromium</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">@JoyNop.</span>
+    </div>
+  </footer>
+
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+</body>
+
+</html>
